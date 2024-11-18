@@ -79,3 +79,74 @@ JOIN
     departments d ON e.department_id = d.department_id
 WHERE 
     d.location_id = (SELECT location_id FROM locations WHERE city = 'Toronto');
+
+
+
+
+
+
+
+
+
+
+
+
+
+ALTER TABLE employees
+ADD CONSTRAINT pk_employees PRIMARY KEY (employee_id);
+
+ALTER TABLE departments
+ADD CONSTRAINT pk_departments PRIMARY KEY (department_id);
+
+ALTER TABLE jobs
+ADD CONSTRAINT pk_jobs PRIMARY KEY (job_id);
+
+ALTER TABLE locations
+ADD CONSTRAINT pk_locations PRIMARY KEY (location_id);
+
+ALTER TABLE countries
+ADD CONSTRAINT pk_countries PRIMARY KEY (country_id);
+
+ALTER TABLE products
+ADD CONSTRAINT pk_product PRIMARY KEY (product_id);
+
+ALTER TABLE regions
+ADD CONSTRAINT pk_region PRIMARY KEY (region_id);
+
+ALTER TABLE sales
+ADD CONSTRAINT pk_sale PRIMARY KEY (sale_id);
+
+ALTER TABLE employees
+ADD CONSTRAINT fk_employees_departments
+FOREIGN KEY (department_id)
+REFERENCES departments (department_id);
+
+ALTER TABLE employees
+ADD CONSTRAINT fk_employees_jobs
+FOREIGN KEY (job_id)
+REFERENCES jobs (job_id);
+
+ALTER TABLE employees
+ADD CONSTRAINT fk_employees_manager
+FOREIGN KEY (manager_id)
+REFERENCES employees (employee_id);
+
+ALTER TABLE departments
+ADD CONSTRAINT fk_departments_locations
+FOREIGN KEY (location_id)
+REFERENCES locations (location_id);
+
+ALTER TABLE job_history
+ADD CONSTRAINT fk_job_history_employees
+FOREIGN KEY (employee_id)
+REFERENCES employees (employee_id);
+
+ALTER TABLE job_history
+ADD CONSTRAINT fk_job_history_jobs
+FOREIGN KEY (job_id)
+REFERENCES jobs (job_id);
+
+ALTER TABLE job_history
+ADD CONSTRAINT fk_job_history_departments
+FOREIGN KEY (department_id)
+REFERENCES departments (department_id);
