@@ -1,0 +1,38 @@
+x1 = load(file)['petal_length_in_cm']
+y1 = load(file)['petal_width_in_cm']
+x2 = load(file)['sepal_width_in_cm']
+y2 = load(file)['petal_width_in_cm']
+x3 = load(file)['sepal_length_in_cm']
+y3 = load(file)['petal_width_in_cm']
+x4 = load(file)['sepal_width_in_cm']
+y4 = load(file)['petal_length_in_cm']
+classes = load(file)['class']
+
+unique_classes  = np.unique(classes)
+names = ['Setosa', 'Versicolor', 'Virginica']
+
+colors = ['red', 'blue', 'green']
+
+fig, axs = plt.subplots(2, 2, figsize=(12, 10))
+
+for i, clas in enumerate(unique_classes):
+    axs[0, 0].scatter(x1[classes == clas], y1[classes == clas], label=names[i], color=colors[i])
+    axs[0, 0].set_xlabel('petal_length_in_cm')
+    axs[0, 0].set_ylabel('petal_width_in_cm')
+    axs[0, 0].legend()
+    axs[0, 1].scatter(x2[classes == clas], y2[classes == clas], label=names[i], color=colors[i])
+    axs[0, 1].set_xlabel('petal_length_in_cm')
+    axs[0, 1].set_ylabel('petal_width_in_cm')
+    axs[0, 1].legend()
+    axs[1, 0].scatter(x3[classes == clas], y3[classes == clas], label=names[i], color=colors[i])
+    axs[1, 0].set_xlabel('petal_length_in_cm')
+    axs[1, 0].set_ylabel('petal_width_in_cm')
+    axs[1, 0].legend()
+    axs[1, 1].scatter(x4[classes == clas], y4[classes == clas], label=names[i], color=colors[i])
+    axs[1, 1].set_xlabel('petal_length_in_cm')
+    axs[1, 1].set_ylabel('petal_width_in_cm')
+    axs[1, 1].legend()
+
+
+
+plt.show()
